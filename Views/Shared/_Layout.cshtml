@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Rallypoint</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> -->
+    <link rel="stylesheet" href="~/css/uikit.min.css" />
+    <script src="~/js/uikit.min.js"></script>
+    <script src="~/js/uikit-icons.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <script type="text/javascript" src="~/js/main.js"></script>
+</head>
+<body>
+    <div class="header">
+        <!-- maybe remove transparent -->
+        <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+
+        <a class="uk-navbar-item uk-logo" href="/"><img src="~/images/logo-2.png"></a>
+
+        <ul class="uk-navbar-nav">
+        </ul>
+
+    </div>
+    <div class="uk-navbar-right" >
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="/games">
+                    <span class="uk-icon uk-margin-small-right desktop-hidden" uk-icon="icon: home"></span><div class="mobile-hidden">Matchmaking</div>  
+                </a>
+            </li>
+            <li>
+                <a href="/forum">
+                    <div class="mobile-hidden">Forum</div>  
+                </a>
+            </li>
+            <li>
+                @{
+                    if (ViewBag.log == "Login")
+                    {
+                        <a href="/login">@ViewBag.log</a>
+                    }
+                    else
+                    {
+                        <a><div class="mobile-hidden">@ViewBag.log</div><span class="uk-icon uk-margin-small-left" uk-icon="icon: triangle-down"></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="/profile/@ViewBag.log" class="uk-link" style="color:rgb(39, 39, 39) !important;">View Profile</a></li>
+                                <li><a href="/login" class="uk-link" style="color:rgb(39, 39, 39) !important;">Logout</a></li>
+                                
+                            </ul>
+                        </div>
+                    }
+                }
+            </li>
+        </ul>
+    </div>
+    </nav>
+
+    </div>
+
+    <div class="body">
+        <!-- Your View will be rendered in place of RenderBody -->
+        @RenderBody()
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
